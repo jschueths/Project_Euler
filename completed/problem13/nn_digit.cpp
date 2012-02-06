@@ -95,6 +95,11 @@ int& NN_DIGIT::operator[](const unsigned int i)
   return m_digit[i];
 }
 
+unsigned int NN_DIGIT::size()
+{
+  return m_digit.size();
+}
+
 const int& NN_DIGIT::operator[](const unsigned int i) const
 {
   if(i >= m_digit.size())
@@ -160,3 +165,37 @@ int NN_DIGIT::get_int(const char &character) const
   }
   return result;
 }
+
+NN_DIGIT& NN_DIGIT::operator*=(const int &rhs)
+{
+  int carry = 0;
+  int result;
+  int x;
+  deque<int>::iterator it = m_digit.begin();
+  deque<int> product;
+  unsigned int length = m_digit.size();
+  for(unsigned int i = 0; i < length; i++)
+  {
+    if(it == m_digit.end())
+      x = 0;
+    else
+      x = *it;
+    result = carry + (rhs * x);
+    product.push_back(result % 10);
+    carry = result / 10;
+    it++;
+    if(it == m_digit.end() && carry != 0)
+      length++;
+  }
+
+  m_digit = product;
+  return *this;
+}
+
+const NN_DIGIT NN_DIGIT::operator*(const int &rhs) const
+{
+  NN_DIGIT result = *this;
+  result *= rhs;
+  return result;
+}
+

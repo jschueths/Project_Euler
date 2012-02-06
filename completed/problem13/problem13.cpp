@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "../../libraries/nn_digit.h"
+#include "nn_digit.h"
 
 using namespace std;
 

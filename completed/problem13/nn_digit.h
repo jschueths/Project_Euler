@@ -28,6 +28,9 @@ class NN_DIGIT
     NN_DIGIT& operator+=(const NN_DIGIT &rhs);
     const NN_DIGIT operator+(const NN_DIGIT &rhs) const;
     
+    NN_DIGIT& operator*=(const int &rhs);
+    const NN_DIGIT operator*(const int &rhs) const;
+    
     int& operator[](const unsigned int i);
     const int& operator[](const unsigned int i) const;
     
@@ -35,6 +38,8 @@ class NN_DIGIT
     
     friend istream& operator>>(istream& in, NN_DIGIT &data);
     friend ostream& operator<<(ostream& out, const NN_DIGIT &data);
+    
+    unsigned int size();
     
   private:
     deque<int> m_digit;
