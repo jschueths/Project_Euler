@@ -39,6 +39,9 @@ class NN_DIGIT
     friend istream& operator>>(istream& in, NN_DIGIT &data);
     friend ostream& operator<<(ostream& out, const NN_DIGIT &data);
     
+    bool operator==(const NN_DIGIT &rhs) const;
+    bool operator!=(const NN_DIGIT &rhs) const;
+    
     unsigned int size();
     
   private:

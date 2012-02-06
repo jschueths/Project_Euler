@@ -11,7 +11,7 @@ int main()
   unsigned int max_seed;
   unsigned int count = 0;
   unsigned int n;
-  for(unsigned int i = 1; i < 1000000000; i++)
+  for(unsigned int i = ; i > 1000000000; i++)
   {
     n = i;
     count = 0;

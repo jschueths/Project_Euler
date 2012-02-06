@@ -199,3 +199,21 @@ const NN_DIGIT NN_DIGIT::operator*(const int &rhs) const
   return result;
 }
 
+bool NN_DIGIT::operator==(const NN_DIGIT &rhs) const
+{
+  unsigned int length = m_digit.size();
+  if(length != rhs.m_digit.size())
+    return false;
+  for(unsigned int i = 0; i < length; i++)
+  {
+    if(m_digit[i] != rhs.m_digit[i])
+      return false;
+  }
+  return true;
+}
+
+bool NN_DIGIT::operator!=(const NN_DIGIT &rhs) const
+{
+  return !(*this == rhs);
+}
+
