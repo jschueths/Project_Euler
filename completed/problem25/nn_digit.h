@@ -31,6 +31,9 @@ class NN_DIGIT
     NN_DIGIT& operator*=(const int &rhs);
     const NN_DIGIT operator*(const int &rhs) const;
     
+    NN_DIGIT& operator*=(const NN_DIGIT &rhs);
+    const NN_DIGIT operator*(const NN_DIGIT &rhs) const;
+    
     int& operator[](const unsigned int i);
     const int& operator[](const unsigned int i) const;
     

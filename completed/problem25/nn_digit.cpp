@@ -1,5 +1,6 @@
 
 #include "nn_digit.h"
+#include <cmath>
 
 NN_DIGIT::NN_DIGIT()
 {
@@ -169,26 +170,13 @@ int NN_DIGIT::get_int(const char &character) const
 NN_DIGIT& NN_DIGIT::operator*=(const int &rhs)
 {
   int carry = 0;
-  int result;
+  //int result;
   int x;
-  deque<int>::iterator it = m_digit.begin();
-  deque<int> product;
-  unsigned int length = m_digit.size();
-  for(unsigned int i = 0; i < length; i++)
-  {
-    if(it == m_digit.end())
-      x = 0;
-    else
-      x = *it;
-    result = carry + (rhs * x);
-    product.push_back(result % 10);
-    carry = result / 10;
-    it++;
-    if(it == m_digit.end() && carry != 0)
-      length++;
-  }
-
-  m_digit = product;
+  
+  NN_DIGIT result;
+  for(int i = 0; i < rhs; i++)
+    result += *this;
+  m_digit = result.m_digit;
   return *this;
 }
 
@@ -217,3 +205,21 @@ bool NN_DIGIT::operator!=(const NN_DIGIT &rhs) const
   return !(*this == rhs);
 }
 
+NN_DIGIT& NN_DIGIT::operator*=(const NN_DIGIT &rhs)
+{
+  int input = 0;
+  unsigned int in_size = rhs.m_digit.size();
+  for(unsigned int i = 0; i < in_size; i++)
+    input += (rhs.m_digit[i] * pow(10, i));
+    
+  *this *= input;
+    
+  return *this;
+}
+
+const NN_DIGIT NN_DIGIT::operator*(const NN_DIGIT &rhs) const
+{
+  NN_DIGIT result(*this);
+  result *= rhs;
+  return result;
+}

@@ -9,9 +9,9 @@ using std::string;
 int main()
 {
   unsigned int sum = 0;
-  NN_DIGIT factorial("1");
-  
-  for(int i = 1; i <= 100; i++)
+  NN_DIGIT factorial("100");
+  std::cout << factorial << std::endl;
+  for(int i = 1; i < 100; i++)
   {
     factorial *= i;
   }

@@ -1,6 +1,5 @@
 
 #include "nn_digit.h"
-#include <cmath>
 
 NN_DIGIT::NN_DIGIT()
 {
@@ -176,6 +175,24 @@ NN_DIGIT& NN_DIGIT::operator*=(const int &rhs)
   NN_DIGIT result;
   for(int i = 0; i < rhs; i++)
     result += *this;
+  /*deque<int>::iterator it = m_digit.begin();
+  deque<int> product;
+  unsigned int length = m_digit.size();
+  for(unsigned int i = 0; i < length; i++)
+  {
+    if(it == m_digit.end())
+      x = 0;
+    else
+      x = *it;
+    result = carry + (rhs * x);
+    product.push_back(result % 10);
+    carry = result / 10;
+    it++;
+    if(it == m_digit.end() && carry != 0)
+      length++;
+  }
+
+  m_digit = product;*/
   m_digit = result.m_digit;
   return *this;
 }
@@ -207,12 +224,46 @@ bool NN_DIGIT::operator!=(const NN_DIGIT &rhs) const
 
 NN_DIGIT& NN_DIGIT::operator*=(const NN_DIGIT &rhs)
 {
-  int input = 0;
-  unsigned int in_size = rhs.m_digit.size();
-  for(unsigned int i = 0; i < in_size; i++)
-    input += (rhs.m_digit[i] * pow(10, i));
-    
-  *this *= input;
+  NN_DIGIT product;
+  unsigned int size = rhs.m_digit.size();
+  unsigned int my_size = m_digit.size();
+  deque<int>::reverse_iterator it;
+  deque<NN_DIGIT> sum;
+  int carry = 0;
+  int result;
+  int x;
+  for(unsigned int i = size - 1; i >= 0; i--)
+  {
+    std::cout << "infinity3" << std::endl;
+    it = m_digit.rbegin();
+    for(unsigned int j = my_size; j > 0; j--)
+    {
+      std::cout << "infinity2" << std::endl;
+      for(unsigned int k = size - 1; k > i; k--)
+      {
+        std::cout << "infinity1" << std::endl;
+        product.m_digit.push_front(0);
+      }
+      if(it == m_digit.rend())
+        x = 0;
+      else
+        x = *it;
+      result = carry + (rhs.m_digit[i] * x);
+      product.m_digit.push_front(result % 10);
+      carry = result / 10;
+      it++;
+      if(it == m_digit.rend() && carry != 0)
+        product.m_digit.push_front(carry);
+    }
+    sum.push_back(product);
+    product.m_digit.clear();
+  }
+  
+  size = sum.size();
+  for(unsigned int i = 1; i < size; i++)
+    sum[0] += sum[i];
+
+  m_digit = sum[0].m_digit;
     
   return *this;
 }
