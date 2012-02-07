@@ -34,6 +34,8 @@ class NN_DIGIT
     NN_DIGIT& operator*=(const NN_DIGIT &rhs);
     const NN_DIGIT operator*(const NN_DIGIT &rhs) const;
     
+    const NN_DIGIT power(const unsigned int y) const;
+    
     int& operator[](const unsigned int i);
     const int& operator[](const unsigned int i) const;
     
@@ -44,6 +46,8 @@ class NN_DIGIT
     
     bool operator==(const NN_DIGIT &rhs) const;
     bool operator!=(const NN_DIGIT &rhs) const;
+    
+    
     
     unsigned int size();
     

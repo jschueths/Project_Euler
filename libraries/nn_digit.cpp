@@ -223,3 +223,18 @@ const NN_DIGIT NN_DIGIT::operator*(const NN_DIGIT &rhs) const
   result *= rhs;
   return result;
 }
+
+const NN_DIGIT NN_DIGIT::power(const unsigned int y) const
+{
+  if(y == 0)
+    return NN_DIGIT(1);
+  else if(y == 1)
+    return NN_DIGIT(*this);
+  
+  NN_DIGIT product(*this);
+  for(unsigned int i = 1; i < y; i++)
+  {
+    product *= *this;
+  }
+  return product;
+}
