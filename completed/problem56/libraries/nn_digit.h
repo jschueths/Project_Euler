@@ -49,7 +49,6 @@ class NN_DIGIT
     
     
     
-    
     unsigned int size();
     
   private:
