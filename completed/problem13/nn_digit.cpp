@@ -204,12 +204,34 @@ bool NN_DIGIT::operator!=(const NN_DIGIT &rhs) const
 NN_DIGIT& NN_DIGIT::operator*=(const NN_DIGIT &rhs)
 {
   int input = 0;
+  int carry = 0;
+  NN_DIGIT result(0);
+  NN_DIGIT refresh(0);
+  NN_DIGIT temp;
+  int int_temp;
+  
   unsigned int in_size = rhs.m_digit.size();
+  unsigned int my_size = m_digit.size();
+  
   for(unsigned int i = 0; i < in_size; i++)
-    input += (rhs.m_digit[i] * pow(10, i));
-    
-  *this *= input;
-    
+  {
+    temp = refresh;
+    for(unsigned int j = 0; j < i; j++)
+      temp.m_digit.push_back(0);
+    carry = 0;
+    for(unsigned int j = 0; j < my_size; j++)
+    {
+      int_temp = carry + (m_digit[j] * rhs[i]);
+      temp.m_digit.push_back(int_temp % 10);
+      carry = int_temp / 10;
+    }
+    if(carry)
+      temp.m_digit.push_back(carry);
+    result += temp;
+  }
+  
+  *this = result;
+  
   return *this;
 }
 
