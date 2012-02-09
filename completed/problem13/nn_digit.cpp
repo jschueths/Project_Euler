@@ -169,11 +169,7 @@ int NN_DIGIT::get_int(const char &character) const
 
 NN_DIGIT& NN_DIGIT::operator*=(const int &rhs)
 {
-  int carry = 0;
-  //int result;
-  int x;
-  
-  NN_DIGIT result;
+  NN_DIGIT result(0);
   for(int i = 0; i < rhs; i++)
     result += *this;
   m_digit = result.m_digit;

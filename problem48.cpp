@@ -10,11 +10,12 @@ int main()
 {
   NN_DIGIT sum(1);
   
-  for(unsigned int i = 2; i < 1001; i++)
+  for(unsigned int i = 1000; i > 0; i--)
   {
     NN_DIGIT temp(i);
     temp = temp.power(i);
     sum += temp;
+    cout << i << endl;
   }
   
   cout << "Last 10 Digits: ";
