@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool is_prime(unsigned long long int x);
+bool is_prime(unsigned long long int &x);
 
 int main()
 {
@@ -32,7 +32,7 @@ int main()
 }
 
 
-bool is_prime(unsigned long long int x)
+bool is_prime(unsigned long long int &x)
 {
   unsigned long long int i = 1;
   if(!(x % 2))
