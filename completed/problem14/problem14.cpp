@@ -7,11 +7,11 @@ unsigned int get_num_divisors(const unsigned int &x);
 
 int main()
 {
-  unsigned int max_count = 0;
-  unsigned int max_seed;
-  unsigned int count = 0;
-  unsigned int n;
-  for(unsigned int i = ; i > 1000000000; i++)
+  unsigned long int max_count = 0;
+  unsigned long int max_seed;
+  unsigned long int count = 0;
+  unsigned long int n;
+  for(unsigned long int i = 2 ; i < 1000000; i++)
   {
     n = i;
     count = 0;
