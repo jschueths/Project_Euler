@@ -57,4 +57,6 @@ class NN_DIGIT
     int get_int(const char &character) const;
 };
   
+#include "nn_digit.hpp"
+
 #endif
