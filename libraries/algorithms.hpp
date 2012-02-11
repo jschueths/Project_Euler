@@ -1,7 +1,6 @@
 //      Author: jschueths
 // Description: Implementation of mathematical algorithms.
 
-#include "algorithms.h"
 
 bool is_prime(unsigned long long int x)
 {
@@ -19,4 +18,62 @@ bool is_prime(unsigned long long int x)
     i++;
   }
   return true;
+}
+
+string convBase(unsigned long v, long base)
+{
+  string digits = "0123456789abcdef";
+  string result;
+  if((base < 2) || (base > 16))
+  {
+    result = "Error: base out of range.";
+  }
+  else
+  {
+    do
+    {
+      result = digits[v % base] + result;
+      v /= base;
+    }while(v);
+  }
+  return result;
+}
+
+bool isPalindrome(string x)
+{
+  string reversed = x;
+  int size = x.length();
+  for(int i = size - 1, j = 0; i >= 0, j < size; j++, i--)
+  {
+    reversed[j] = x[i];
+  }
+  return (x == reversed);
+}
+
+string convert_to_string(long long int x)
+{
+  stringstream oss;
+  oss << x;
+  return oss.str();
+}
+
+unsigned int HCF(unsigned int n, unsigned int d)
+{
+  unsigned int result = d % n;
+  unsigned int x1, x2;
+
+  x1 = d;
+  x2 = n;
+  while(true)
+  {
+    result = x1 % x2;
+    if(result == 0)
+    {
+      result = x2;
+      break;
+    }
+    x1 = x2;
+    x2 = result;
+  }
+  return result;
 }
