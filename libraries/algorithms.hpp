@@ -82,3 +82,114 @@ unsigned int HCF(unsigned int n, unsigned int d)
   }
   return result;
 }
+
+string num_to_words(long long int n)
+{
+  long long num = n;
+  string output = "";
+  if(num < 0)
+    output += "negative ";
+  if(num >= 1000)
+  {
+    output += english_lookup(num / 1000, 0);
+    if(n % 1000)
+      output += " thousand ";
+    else
+      output += " thousand";
+    num = num % 1000;
+  }
+  if(num >= 100)
+  {
+    output += english_lookup(num / 100, 0);
+    if(num % 100)
+      output += " hundred and ";
+    else
+      output += " hundred";
+    num = num % 100;
+  }
+  if(num >= 20)
+  {
+    output += english_lookup(num / 10, 1);
+    num = num % 10;
+    if(num != 0)
+      output += "-";
+  }
+  if(num > 0)
+  {
+    output += english_lookup(num, 0);
+  }
+  return output;
+}
+
+string english_lookup(long long int n, bool tens)
+{
+  if(!tens)
+  {
+    switch(n)
+    {
+      case 0:
+        return 0;
+      case 1:
+        return "one";
+      case 2:
+        return "two";
+      case 3:
+        return "three";
+      case 4:
+        return "four";
+      case 5:
+        return "five";
+      case 6:
+        return "six";
+      case 7:
+        return "seven";
+      case 8:
+        return "eight";
+      case 9:
+        return "nine";
+      case 10:
+        return "ten";
+      case 11:
+        return "eleven";
+      case 12:
+        return "twelve";
+      case 13:
+        return "thirteen";
+      case 14:
+        return "fourteen";
+      case 15:
+        return "fifteen";
+      case 16:
+        return "sixteen";
+      case 17:
+        return "seventeen";
+      case 18:
+        return "eighteen";
+      case 19:
+        return "nineteen";
+    }
+  }
+  if(tens)
+  {
+    switch(n)
+    {
+      case 2:
+        return "twenty";
+      case 3:
+        return "thirty";
+      case 4:
+        return "forty";
+      case 5:
+        return "fifty";
+      case 6:
+        return "sixty";
+      case 7:
+        return "seventy";
+      case 8:
+        return "eighty";
+      case 9:
+        return "ninety";
+    }
+  }
+  return "zero";
+}

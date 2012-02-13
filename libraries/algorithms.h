@@ -19,6 +19,10 @@ bool isPalindrome(string x);
 string convert_to_string(long long int x);
 int convert_to_int(string x);
 unsigned int HCF(unsigned int n, unsigned int d);
+
+string english_lookup(long long int n, bool tens);
+string num_to_words(long long int n);
+
 #include "algorithms.hpp"
 
 #endif
