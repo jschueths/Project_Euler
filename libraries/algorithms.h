@@ -25,6 +25,10 @@ string num_to_words(long long int n);
 
 unsigned int d_amicable(unsigned int x);
 
+bool is_perfect(unsigned int x);
+bool is_deficient(unsigned int x);
+bool is_abundant(unsigned int x);
+
 #include "algorithms.hpp"
 
 #endif

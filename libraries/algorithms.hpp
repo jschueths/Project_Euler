@@ -61,6 +61,27 @@ unsigned int d_amicable(unsigned int x)
   return sum;
 }
 
+bool is_perfect(unsigned int x)
+{
+  if(d_amicable(x) == x)
+    return true;
+  return false;
+}
+
+bool is_deficient(unsigned int x)
+{
+  if(d_amicable(x) < x)
+    return true;
+  return false;
+}
+
+bool is_abundant(unsigned int x)
+{
+  if(d_amicable(x) > x)
+    return true;
+  return false;
+}
+
 string convert_to_string(long long int x)
 {
   stringstream oss;
