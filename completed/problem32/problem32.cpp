@@ -25,7 +25,7 @@ int main()
       equation = convert_to_string(i);
       equation += convert_to_string(j);
       equation += convert_to_string(product);
-      if(is_pandigital(equation, 9))
+      if(is_pandigital(equation, 1, 9))
       {
         if(!in_vector(product, products))
           products.push_back(product);

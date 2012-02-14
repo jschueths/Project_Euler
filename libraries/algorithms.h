@@ -30,7 +30,7 @@ bool is_perfect(unsigned int x);
 bool is_deficient(unsigned int x);
 bool is_abundant(unsigned int x);
 
-bool is_pandigital(string x, unsigned int n);
+bool is_pandigital(string x, unsigned int min, unsigned int max);
 
 #include "algorithms.hpp"
 

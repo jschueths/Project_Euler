@@ -115,12 +115,12 @@ unsigned int HCF(unsigned int n, unsigned int d)
   return result;
 }
 
-bool is_pandigital(string x, unsigned int n)
+bool is_pandigital(string x, unsigned int min, unsigned int max)
 {
   string input = x;
   string temp;
   size_t position;
-  for(unsigned int i = n; i > 0; i--)
+  for(unsigned int i = max; i >= min; i--)
   {
     temp = convert_to_string(i);
     position = input.find(temp);
