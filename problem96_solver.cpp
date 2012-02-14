@@ -44,6 +44,9 @@ bool Sudoku_solver::solve(int x, int y)
   {
     int j = y; j < 9; j++)
     {
+      if(m_cell[i][j] != 0)
+      {
+        
       for(int k = 1; k < 10; k++)
       {
-        if
+        if(m_cell
