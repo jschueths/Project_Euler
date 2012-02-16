@@ -10,15 +10,12 @@ int main()
 {
   unsigned long long int sum = 0;
   string temp;
-  unsigned int limit = 1000000;
-  for(unsigned int i = 0; i < limit; i++)
+  unsigned long long int limit = 1000000;
+  for(unsigned long long int i = 0; i <= limit; i++)
   {
     temp = convBase(i, 2);
     if(isPalindrome(convert_to_string(i)) && isPalindrome(temp))
-    {
-      cout << i << "\t" << temp << endl;
       sum += i;
-    }
   }
   cout << "Sum: " << sum << endl;
   return 0;
