@@ -7,7 +7,8 @@
 int main()
 {
   int sum = 0;
-  Timer my_timer.start();
+  Timer my_timer;
+  my_timer.start();
   for(int i = 0; i < 1000; i++)
   {
     // If the number is a multiple of 3, 5, or both, add it to the sum.
