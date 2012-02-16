@@ -10,7 +10,8 @@ int main()
   long int last_val;
   long int cur_val = 1;
   long int next_val = 2;
-  Timer my_timer.start();
+  Timer my_timer;
+  my_timer.start();
   sum = next_val;
   
   while(next_val < 4000000)
