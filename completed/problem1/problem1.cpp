@@ -17,6 +17,6 @@ int main()
   my_timer.end();
   std::cout << "The sum of all the natural numbers below one thousand that are multiples of 3 or 5" << std::endl;
   std::cout << "Sum: " << sum << std::endl;
-  std::cout << "Time Elapsed: " << my_timer << " seconds" << endl;
+  std::cout << "Time Elapsed: " << my_timer << " seconds" << std::endl;
   return 0;
 }
