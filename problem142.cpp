@@ -3,52 +3,57 @@
 
 #include <iostream>
 #include <cmath>
+#include <string>
+
+#include "./libraries/algorithms.h"
 
 using namespace std;
 
-bool is_square(unsigned int x);
-
 int main()
 {
-  unsigned int limit = 10000;
+  string input;
+  unsigned int old_limit = 3;
+  unsigned int limit = 1000;
   unsigned int m_x, m_y, m_z;
   bool found = false;
-  for(unsigned int x = 3; x < limit, !found; x++)
+  cout << boolalpha << is_perfect_square(4) << endl;
+  cout << boolalpha << is_perfect_square(7) << endl;
+  cout << boolalpha << is_perfect_square(16) << endl;
+  do
   {
-    for(unsigned int y = 2; y < x, !found; y++)
+    for(unsigned int x = old_limit; x < limit; x++)
     {
-      bool is_squared = true;
-      for(unsigned int z = 1; z < y, !found; z++)
+      for(unsigned int y = 2; y < x; y++)
       {
-        if(!is_square(x + y))
+        bool is_squared = true;
+        if(!is_perfect_square(x + y))
           is_squared = false;
-        if(!is_square(x - y))
-          is_squared = false;
-        if(!is_square(x + z))
-          is_squared = false;
-        if(!is_square(x - z))
-          is_squared = false;
-        if(!is_square(y + z))
-          is_squared = false;
-        if(!is_square(y - z))
+        if(!is_perfect_square(x - y))
           is_squared = false;
         if(is_squared)
         {
-          cout << "Smallest: " << x + y + z << endl;
-          found = true;
+          for(unsigned int z = 1; z < y; z++)
+          {
+            if(!is_perfect_square(x + z))
+              is_squared = false;
+            if(!is_perfect_square(x - z))
+              is_squared = false;
+            if(!is_perfect_square(y + z))
+              is_squared = false;
+            if(!is_perfect_square(y - z))
+              is_squared = false;
+            if(is_squared)
+            {
+              cout << "Smallest: " << x + y + z << endl;
+              found = true;
+            }
+          }
         }
       }
     }
-  }
+    cout << limit << endl;
+    old_limit = limit;
+    limit += 10000;
+  }while(!found);
   return 0;
-}
-
-bool is_square(unsigned int x)
-{
-  for(unsigned int i = sqrt(x) - 2; i < sqrt(x) + 2; i++)
-  {
-    if((i * i) == x)
-      return true;
-  }
-  return false;
 }

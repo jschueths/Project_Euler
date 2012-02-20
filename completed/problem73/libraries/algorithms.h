@@ -17,7 +17,6 @@ string convBase(unsigned long v, long base);
 bool isPalindrome(string x);
 string convert_to_string(long long int x);
 unsigned int HCF(unsigned int n, unsigned int d);
-bool is_perfect_square(unsigned int h);
 #include "algorithms.hpp"
 
 #endif
