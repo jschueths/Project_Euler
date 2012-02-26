@@ -3,12 +3,10 @@
 
 #include <string>
 #include <iostream>
-#include <sstream>
+#include "./libraries/timer.h"
+#include "./libraries/algorithms.h"
 
 using namespace std;
-
-bool isPalindrome(string x);
-string convert_to_string(int x);
 
 int main()
 {
@@ -16,12 +14,16 @@ int main()
   string temp;
   unsigned int largest_val = 0;
   unsigned int product;
+  Timer my_timer;
+  my_timer.start();
   for(int i = 100; i < 1000; i++)
   {
     for(int j = 100; j < 1000; j++)
     {
       product = i * j;
       temp = convert_to_string(product);
+      
+      // If the current product is a palindrome, save it as the largest found.
       if(isPalindrome(temp))
       {
         if((i * j) > largest_val)
@@ -32,25 +34,8 @@ int main()
       }
     }
   }
-  
+  my_timer.end();
   cout << "Largest Palindrome: " << largest_pal << endl;
+  cout << "Time Elapsed: " << my_timer << " seconds" << endl;
   return 0;
-}
-
-bool isPalindrome(string x)
-{
-  string reversed = x;
-  int size = x.length();
-  for(int i = size - 1, j = 0; i >= 0, j < size; j++, i--)
-  {
-    reversed[j] = x[i];
-  }
-  return (x == reversed);
-}
-
-string convert_to_string(int x)
-{
-  stringstream oss;
-  oss << x;
-  return oss.str();
 }
