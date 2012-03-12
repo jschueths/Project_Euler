@@ -25,6 +25,8 @@ int main()
     totient.push_back(i);
   phi(totient);
   
+  
+  
   my_time.start();
   for(unsigned long int d = 2; d <= limit; d++)
   {
