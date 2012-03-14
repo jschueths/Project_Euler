@@ -79,11 +79,7 @@ int main()
   cout << "Solution: " << denom << endl;
   cout << "Time Elapsed: " << my_time << " seconds" << endl;
   return 0;
-}  
-
-
-
-
+}
 
 unsigned long long int R(unsigned long long int n)
 {
