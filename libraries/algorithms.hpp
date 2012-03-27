@@ -31,6 +31,18 @@ bool is_perfect_square(unsigned long long int x)
   return result;
 }
 
+bool is_perfect_cube(unsigned long long int x)
+{
+  bool result = true;
+  unsigned long long int upper_limit = sqrt(x);
+  for(unsigned long long int i = 1; i < upper_limit; i++)
+  {
+    if(i * i * i == x)
+      return true;
+  }
+  return false;
+}
+
 string convBase(unsigned long long int v, unsigned long int base)
 {
   string digits = "0123456789abcdef";
