@@ -20,27 +20,15 @@ bool is_prime(long long int x)
   return true;
 }
 
-bool is_perfect_square(unsigned long long int x)
+bool is_perfect_square(unsigned int x)
 {
   bool result = true;
-  long double temp = sqrt((double) x);
+  double temp = sqrt((double) x);
   //std::cout << "Temp: " << temp << "\t floor(temp): " << floor(temp) << endl;
   if((temp - floor(temp)) > 0)
     result = false;
  // std::cout << std::boolalpha << result << endl;
   return result;
-}
-
-bool is_perfect_cube(unsigned long long int x)
-{
-  bool result = true;
-  unsigned long long int upper_limit = sqrt(x);
-  for(unsigned long long int i = 1; i < upper_limit; i++)
-  {
-    if(i * i * i == x)
-      return true;
-  }
-  return false;
 }
 
 string convBase(unsigned long long int v, unsigned long int base)
@@ -119,48 +107,14 @@ void phi(vector<unsigned long int> &x)
   return;
 }
 
-unsigned long long int phi(unsigned long long int x)
-{
-  unsigned long long int result = x;
-  unsigned long long int new_x = x;
-  
-  if(is_prime(x))
-  {
-    if(!(x % 2))
-      new_x -= (new_x / 2);
-    for(unsigned long long int i = 3; i <= x; i += 2)
-    {
-      if(!is_prime(i))
-        continue;
-      if(!(x % i))
-      {
-        new_x -= (new_x / i);
-      }
-    }
-    return new_x;
-  }
-  else
-  {
-    for(unsigned long long i = 2; i < new_x; i++)
-    {
-      if(is_prime(i) && (x % i == 0))
-      {
-        result *= i - 1;//phi(i);
-        result /= i;
-      }
-    } 
-  }
-  return result;
-}
-
-string convert_to_string(unsigned long long int x)
+string convert_to_string(long long int x)
 {
   stringstream oss;
   oss << x;
   return oss.str();
 }
 
-long long int convert_to_int(string x)
+int convert_to_int(string x)
 {
   return (atoi(x.c_str()));
 }
@@ -184,14 +138,6 @@ unsigned int HCF(unsigned int n, unsigned int d)
     x2 = result;
   }
   return result;
-}
-
-unsigned int gcd(unsigned int n, unsigned int d)
-{
-  if(n == 0)
-    return d;
-  
-  return gcd(d % n, n);
 }
 
 bool is_pandigital(string x, unsigned int min, unsigned int max)
@@ -356,48 +302,4 @@ bool is_permutation(unsigned int x, unsigned int y)
     return false;
   }
   return true;
-}
-
-unsigned long long int combination(long long int n, long long int r)
-{
-  unsigned long long int n_fact;
-  unsigned long long int n_r_fact;
-  unsigned long long int result = n;
-  unsigned long long int temp;
-  if(n == r || r == 0)
-    return 1;
-  
-  if(r == 1)
-    return n;
-  
-  if((n - r) > r)
-  {
-    n_r_fact = fact(r);
-    r = n - r;
-  }
-  else
-  {
-    n_r_fact = fact(n - r);
-  }
-  
-  for(unsigned long long int i = result - 1; i > r; i--)
-    result *= i;
-
-  if(n == 100 && r == 50)
-  {
-    std::cout << result << "\t" << n_r_fact << std::endl;
-  }
-  
-  return (result / n_r_fact);
-}
-
-unsigned long long int fact(long long int n)
-{
-  unsigned long long int result = n;
-  
-  if(n == 0)
-    return 1;
-  result = n * (fact(n - 1));
-  
-  return result;
 }

@@ -20,27 +20,15 @@ bool is_prime(long long int x)
   return true;
 }
 
-bool is_perfect_square(unsigned long long int x)
+bool is_perfect_square(unsigned int x)
 {
   bool result = true;
-  long double temp = sqrt((double) x);
+  double temp = sqrt((double) x);
   //std::cout << "Temp: " << temp << "\t floor(temp): " << floor(temp) << endl;
   if((temp - floor(temp)) > 0)
     result = false;
  // std::cout << std::boolalpha << result << endl;
   return result;
-}
-
-bool is_perfect_cube(unsigned long long int x)
-{
-  bool result = true;
-  unsigned long long int upper_limit = sqrt(x);
-  for(unsigned long long int i = 1; i < upper_limit; i++)
-  {
-    if(i * i * i == x)
-      return true;
-  }
-  return false;
 }
 
 string convBase(unsigned long long int v, unsigned long int base)
@@ -184,14 +172,6 @@ unsigned int HCF(unsigned int n, unsigned int d)
     x2 = result;
   }
   return result;
-}
-
-unsigned int gcd(unsigned int n, unsigned int d)
-{
-  if(n == 0)
-    return d;
-  
-  return gcd(d % n, n);
 }
 
 bool is_pandigital(string x, unsigned int min, unsigned int max)

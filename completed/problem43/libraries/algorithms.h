@@ -39,8 +39,7 @@ unsigned long long int phi(unsigned long long int x);
 bool is_permutation(unsigned int x, unsigned int y);
 bool is_pandigital(string x, unsigned int min, unsigned int max);
 
-bool is_perfect_square(unsigned long long int x);
-bool is_perfect_cube(unsigned long long int x);
+bool is_perfect_square(unsigned int x);
 
 unsigned long long int combination(long long int n, long long int r);
 unsigned long long int fact(long long int n);
