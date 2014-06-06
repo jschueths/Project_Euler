@@ -2,38 +2,37 @@
 // Description: Problem 12 of the Euler Project (projecteuler.net/problems)
 
 #include <iostream>
+#include <cmath>
 
-unsigned int get_num_divisors(const unsigned int &x);
 
-int main()
-{
-  unsigned int num = 1;
-  unsigned int tri_num = 0;
-  unsigned int num_divisors = 1;
-  unsigned int max_divisors = 0;
+int main() {
+/*   num := 0;
+  j := 0;
+  repeat
+  inc(j);
+  f := 0;
+  num := num + j;
+    for n := 1 to round(sqrt(num)) do
+    if num mod n = 0 then
+    f := f + 2;
+  until
+  f > 500;
+*/ 
+
+	size_t triNum = 0;
+	size_t j = 0;
+	size_t numDivisors = 0;
+	while(numDivisors <= 500) {
+		numDivisors = 0;
+		triNum += ++j;
+		for (size_t i = 1; i < sqrt(triNum) + 1; ++i) {
+			if(!(triNum % i)) {
+				numDivisors += 2;
+			}
+		}
+	} 
   
-  while(num_divisors < 500)
-  {
-    tri_num += num;
-    
-    num_divisors = get_num_divisors(tri_num);
-    if(num_divisors > max_divisors)
-      max_divisors = num_divisors;
-    num++;
-  }
-  
-  std::cout << "Triangle Number: " << tri_num << std::endl;
-  return 0;
+	std::cout << "Triangle Number: " << triNum << std::endl;
+	return 0;
 }
 
-unsigned int get_num_divisors(const unsigned int &x)
-{
-  unsigned int count = 0;
-  for(int i = 1; i <= x/2; i++)
-  {
-    if(!(x % i))
-      count++;
-  }
-  count++;
-  return count;
-}
