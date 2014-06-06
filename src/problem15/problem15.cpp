@@ -8,20 +8,20 @@ using std::endl;
 
 int main()
 {
-  unsigned long long int path[21][21];
+  size_t path[21][21];
   
-  for(int i = 0; i < 21; i++)
+  for(size_t i = 0; i < 21; i++)
   {
-    for(int j = 0; j < 21; j++)
+    for(size_t j = 0; j < 21; j++)
     path[i][j] = 0;
   }
   path[0][0] = 1;
   path[0][1] = 1;
   path[1][0] = 1;
   
-  for(int i = 0; i < 21; i++)
+  for(size_t i = 0; i < 21; i++)
   {
-    for(int j = 0; j < 21; j++)
+    for(size_t j = 0; j < 21; j++)
     {
       if(!(i == 0 && j == 0))
       {
