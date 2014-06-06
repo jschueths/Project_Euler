@@ -8,6 +8,7 @@ add_subdirectory(problem7)
 add_subdirectory(problem8)
 add_subdirectory(problem9)
 add_subdirectory(problem10)
+add_subdirectory(problem11)
 
 add_subdirectory(problem24)
 
