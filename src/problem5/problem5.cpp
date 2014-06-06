@@ -2,30 +2,13 @@
 // Description: Problem 5 of the Euler Project (projecteuler.net/problems)
 
 #include <iostream>
+#include <boost/math/common_factor.hpp>
 
-int main()
-{
-  long int num = 20;
-  bool evenly_divisible = true;
-  bool found = false;
-  
-  while(!found)
-  {
-    evenly_divisible = true;
-    for(int i = 1; i < 21; i++)
-    {
-      if(num % i)
-      {
-        evenly_divisible = false;
-        break;
-      }
-    }
-    if(evenly_divisible)
-      found = true;
-    else
-      num++;
-  }
-  
-  std::cout << "Smallest number: " << num << std::endl;
-  return 0;
+int main() {
+	size_t result = boost::math::lcm(1, 2);
+	for(size_t i = 3; i <= 20; ++i){
+		result = boost::math::lcm(result, i);
+	}
+	std::cout << "LCM of [1, 20]: " << result << std::endl;
+	return 0;
 }
