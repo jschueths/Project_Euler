@@ -3,40 +3,17 @@
 
 #include <iostream>
 
-int main()
-{
+int main() {
 
-  int a, b, c;
-  int product;
-  bool found = false;
-  
-  for(int i = 1; i < 1000; i++)
-  {
-    for(int j = i + 1; j < 1000; j++)
-    {
-      for(int k = j + 1; k < 1000; k++)
-      {
-        int i_sq = i * i;
-        int j_sq = j * j;
-        int k_sq = k * k;
-        if((i_sq + j_sq == k_sq) && (i + j + k == 1000))
-        {
-          found == true;
-          a = i;
-          b = j;
-          c = k;
-          break;
-        }
-      }
-      if(found)
-        break;
-    }
-    if(found)
-      break;
-  }
-  
-  product = a * b * c;
-  std::cout << "Product: " << product << std::endl;
-  
-  return 0;
+	for(size_t c = 998; c > 2; --c) {
+		for(size_t b = 1000 - c - 1; b > c/2; --b) {
+			size_t a = 1000 - c - b;
+			if(a + b + c == 1000 && (a * a) + (b * b) == (c * c)) {
+				std::cout << "Product: " << a * b * c << std::endl;
+				return 0;
+			}
+		}
+	}
+	return 0;
 }
+
