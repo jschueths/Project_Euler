@@ -3,15 +3,15 @@
 
 #include <iostream>
 
-unsigned int get_num_divisors(const unsigned int &x);
+size_t get_num_divisors(const size_t &x);
 
 int main()
 {
-  unsigned long int max_count = 0;
-  unsigned long int max_seed;
-  unsigned long int count = 0;
-  unsigned long int n;
-  for(unsigned long int i = 2 ; i < 1000000; i++)
+  size_t max_count = 0;
+  size_t max_seed;
+  size_t count = 0;
+  size_t n;
+  for(size_t i = 2 ; i < 1000000; i++)
   {
     n = i;
     count = 0;
@@ -32,3 +32,4 @@ int main()
   std::cout << "Max seed: " << max_seed << std::endl;
   return 0;
 }
+

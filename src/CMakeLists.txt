@@ -11,6 +11,7 @@ add_subdirectory(problem10)
 add_subdirectory(problem11)
 add_subdirectory(problem12)
 add_subdirectory(problem13)
+add_subdirectory(problem14)
 
 
 add_subdirectory(problem24)
