@@ -10,7 +10,7 @@ include_directories(${Boost_INCLUDE_DIR})
 add_definitions("-DHAS_BOOST")
 
 include_directories(lib)
-#add_subdirectory(lib)
+add_subdirectory(lib)
 add_subdirectory(src)
 #add_subdirectory(test)
 
