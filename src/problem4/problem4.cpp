@@ -1,41 +1,29 @@
 //      Author: jschueths
 // Description: Problem 4 of the Euler Project (projecteuler.net/problems)
 
+#include <algorithm>
 #include <string>
 #include <iostream>
-#include "./libraries/timer.h"
-#include "./libraries/algorithms.h"
+#include <boost/lexical_cast.hpp>
 
-using namespace std;
-
-int main()
-{
-  string largest_pal;
-  string temp;
-  unsigned int largest_val = 0;
-  unsigned int product;
-  Timer my_timer;
-  my_timer.start();
-  for(int i = 100; i < 1000; i++)
-  {
-    for(int j = 100; j < 1000; j++)
-    {
-      product = i * j;
-      temp = convert_to_string(product);
-      
-      // If the current product is a palindrome, save it as the largest found.
-      if(isPalindrome(temp))
-      {
-        if((i * j) > largest_val)
-        {
-          largest_val = i * j;
-          largest_pal = temp;
-        }
-      }
-    }
-  }
-  my_timer.end();
-  cout << "Largest Palindrome: " << largest_pal << endl;
-  cout << "Time Elapsed: " << my_timer << " seconds" << endl;
-  return 0;
+bool isPalindrome(std::string x) {
+	std::string reversed = x;
+	std::reverse_copy(x.begin(), x.end(), reversed.begin());
+	return x == reversed;
 }
+
+int main() {
+	size_t largest = 0;
+	for(int i = 999; i >= 100; --i) {
+		for(int j = 999; j >= i; --j) {
+			size_t product = i * j;
+			// If the current product is a palindrome, save it as the largest found.
+			if(isPalindrome(boost::lexical_cast<std::string>(product)) && product > largest) {
+				largest = product;
+			}
+		}
+	}
+	std::cout << "Largest Palindrome: " << largest << std::endl;
+	return 0;
+}
+
