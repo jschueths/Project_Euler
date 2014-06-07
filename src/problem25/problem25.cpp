@@ -2,27 +2,23 @@
 // Description: Problem 25 of the Euler Project (projecteuler.net/problems)
 
 #include <iostream>
+#include <boost/multiprecision/cpp_int.hpp>
 
-#include "nn_digit.h"
+int main() {
+	boost::multiprecision::cpp_int last = 1;
+	boost::multiprecision::cpp_int curr = 1;
+	boost::multiprecision::cpp_int next = 1;
 
-int main()
-{
-  NN_DIGIT last("1");
-  NN_DIGIT cur("1");
-  NN_DIGIT next;
-  
-  unsigned int term = 2;
-  
-  next = cur;
-  
-  while(next.size() != 1000)
-  {
-    last = cur;
-    cur = next;
-    next = last + cur;
-    term++;
-  }
-  
-  std::cout << "Term: " << term << std::endl;
-  return 0;
+	size_t i = 2;
+	next = curr;
+
+	for(i = 2; next.str().size() < 1000; ++i) {
+		last = curr;
+		curr = next;
+		next = last + curr;
+	}
+		  
+	std::cout << "Term: " << i << std::endl;
+	return 0;
 }
+

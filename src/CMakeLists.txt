@@ -22,4 +22,5 @@ add_subdirectory(problem21)
 
 
 add_subdirectory(problem24)
+add_subdirectory(problem25)
 
