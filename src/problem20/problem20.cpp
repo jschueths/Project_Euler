@@ -2,31 +2,25 @@
 // Description: Problem 20 of the Euler Project (projecteuler.net/problems)
 
 #include <iostream>
-#include "./libraries/nn_digit.h"
+#include <boost/multiprecision/cpp_int.hpp>
+#include <boost/lexical_cast.hpp>
 
-using std::string;
-
-int main()
-{
-  unsigned int sum = 0;
-  NN_DIGIT factorial("100");
-  std::cout << factorial << std::endl;
-  for(int i = 1; i < 100; i++)
-  {
-    factorial *= i;
-  }
-  std::cout << factorial << std::endl;
-  unsigned int fact = 100;
-  for(unsigned int i = 99; i > 0; i--)
-    fact *= i;
-  std::cout << fact << std::endl;
-  
-  unsigned int length = factorial.size();
-  for(unsigned int i = 0; i < length; i++)
-  {
-    sum += factorial[i];
-  }
-  
-  std::cout << "Sum: " << sum << std::endl;
-  return 0;
+boost::multiprecision::cpp_int factorial(boost::multiprecision::cpp_int x) {
+	if(x == 0) {
+		return 1;
+	}
+	return x * factorial(x-1);
 }
+
+int main() {
+	size_t sum = 0;
+	boost::multiprecision::cpp_int fact = factorial(100);
+	std::string factString = fact.str();
+	for(auto it = factString.begin(); it != factString.end(); it++) {
+		sum += boost::lexical_cast<size_t>(*it);
+	}
+  
+	std::cout << "Sum: " << sum << std::endl;
+	return 0;
+}
+
