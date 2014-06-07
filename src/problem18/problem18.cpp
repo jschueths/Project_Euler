@@ -5,52 +5,25 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "triangle.h"
 
-using namespace std;
 
-unsigned int max_path(vector<vector<unsigned int> > &triangle);
+size_t max_path(std::vector<std::vector<size_t> > &triangle);
 
-int main(int argc, char *argv[])
-{
-  ifstream in;
-  unsigned int sum = 0;
-  vector<vector<unsigned int> > my_triangle;
-  vector<unsigned int> temp_v;
-  unsigned int index_i = 0;
-  unsigned int index_j = 0;
-  unsigned int temp;
-  if(argc != 2)
-  {
-    std::cerr << "Incorrect Usage" << std::endl;
-    return 1;
-  }
-  in.open(argv[1]);
-  int level = 0;
-  do
-  {
-    for(int i = 0; i < level+1; i++)
-    {
-      in >> temp;
-      temp_v.push_back(temp);
-    }
-    my_triangle.push_back(temp_v);
-    temp_v.clear();
-    level++;
-  }while(!in.eof());
-  in.close();
-  
-  sum = max_path(my_triangle);
-  cout << "Max Sum: " << sum << endl;
-  return 0;
+int main() {
+	size_t sum = 0;
+	std::vector<std::vector<size_t> > my_triangle(TRIANGLE.begin(), TRIANGLE.end());
+	sum = max_path(my_triangle);
+ 	std::cout << "Max Sum: " << sum << std::endl;
+	return 0;
 }
 
-unsigned int max_path(vector<vector<unsigned int> > &triangle)
-{
-  unsigned int max = 0;
-  unsigned int limit = triangle.size();
-  for(unsigned int i = 1; i < limit; i++)
+size_t max_path(std::vector<std::vector<size_t> > &triangle) {
+  size_t max = 0;
+  size_t limit = triangle.size();
+  for(size_t i = 1; i < limit; i++)
   {
-    for(unsigned int j = 0; j <= i; j++)
+    for(size_t j = 0; j <= i; j++)
     {
       if(j == 0)
       {
@@ -70,7 +43,7 @@ unsigned int max_path(vector<vector<unsigned int> > &triangle)
     }
   }
   // Find the max:
-  for(unsigned int i = 0; i < triangle[limit - 1].size(); i++)
+  for(size_t i = 0; i < triangle[limit - 1].size(); i++)
   {
     if(triangle[limit-1][i] > max)
       max = triangle[limit-1][i];
